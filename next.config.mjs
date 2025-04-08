@@ -1,5 +1,6 @@
 import { withSentryConfig } from '@sentry/nextjs';
 import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin';
+import packageJson from './package.json' with { type: 'json' };
 
 const withVanillaExtract = createVanillaExtractPlugin();
 
@@ -14,9 +15,10 @@ const nextConfig = {
 const vanillaAppliedConfig = withVanillaExtract(nextConfig);
 
 export default withSentryConfig(vanillaAppliedConfig, {
-	org: 'tapie-kr',
-	project: 'template-test',
-	sentryUrl: 'https://sentry.vport.dev/',
+	org: process.env.SENTRY_ORG,
+	project: process.env.SENTRY_PROJECT,
+	sentryUrl: process.env.SENTRY_URL || 'https://sentry.io',
+	release: packageJson.version,
 	silent: !process.env.CI,
 	widenClientFileUpload: true,
 	reactComponentAnnotation: {
