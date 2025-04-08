@@ -1,7 +1,7 @@
 {
 	"name": "@tapie-kr/nextjs-starter",
 	"version": "1.0.0",
-	"description": "",
+	"description": "TAPIE Standard NextJS Starter Template",
 	"license": "MIT",
 	"homepage": "https://tapie.kr/",
 	"repository": {
